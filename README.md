@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
+# Math Learning Mobile App - Determinant
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplikasi mobile pembelajaran interaktif untuk memahami dan menghitung determinan matriks 2x2 dan 3x3. Dibangun menggunakan React Native, Expo, dan NativeWind (Tailwind CSS untuk React Native).
 
-## Get started
+## 🌟 Fitur Utama
 
-1. Install dependencies
+- **📖 Materi Pembelajaran**: Penjelasan interaktif mengenai konsep, rumus, dan contoh penyelesaian determinan matriks 2x2 serta metode Sarrus untuk matriks 3x3.
+- **🧮 Kalkulator Cerdas**: Hitung determinan secara instan dengan memasukkan nilai matriks 2x2 atau 3x3, lengkap dengan langkah-langkah detail perhitungannya.
+- **🎯 Kuis Berwaktu**: Uji pemahaman dengan menjawab soal determinan matriks acak. Terdapat batasan waktu (1 menit untuk 2x2, 3 menit untuk 3x3) dengan animasi dan peringatan suara saat waktu hampir habis.
 
-   ```bash
-   npm install
-   ```
+## 🛠️ Teknologi yang Digunakan
 
-2. Start the app
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/) (dengan Expo Router)
+- [NativeWind v4](https://www.nativewind.dev/) (Tailwind CSS)
+- [Lucide React Native](https://lucide.dev/icons)
+- TypeScript
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🚀 Cara Menjalankan di Local Development (Dev)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Ikuti langkah-langkah berikut untuk menginstall dan menjalankan aplikasi ini secara lokal di komputer Anda:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 1. Persyaratan Sistem (Prerequisites)
+Pastikan Anda sudah menginstall:
+- [Node.js](https://nodejs.org/) (disarankan versi LTS, misal v18 atau v20)
+- Aplikasi **Expo Go** di HP Anda (tersedia di Play Store / App Store)
 
-## Get a fresh project
+### 2. Instalasi
 
-When you're ready, run:
+Clone repository ini ke komputer Anda dan masuk ke direktorinya:
 
 ```bash
-npm run reset-project
+git clone https://github.com/varrelnuwi/Math-Learning-Mobile-App.git
+cd Math-Learning-Mobile-App
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Kemudian, install semua dependensi yang dibutuhkan:
 
-## Learn more
+```bash
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Menjalankan Aplikasi (Development Server)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Jalankan server Expo dengan perintah (opsi `-c` digunakan untuk memastikan cache bersih):
 
-## Join the community
+```bash
+npx expo start -c
+```
 
-Join our community of developers creating universal apps.
+Setelah server berjalan, akan muncul QR Code di terminal.
+- **Android**: Buka aplikasi Expo Go di HP Anda dan scan QR Code tersebut.
+- **iOS**: Buka menu Kamera di iPhone dan scan QR Code tersebut.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+*Catatan: Pastikan komputer dan HP berada dalam jaringan Wi-Fi yang sama.*
+
+---
+
+## 📦 Cara Membangun (Build) File Installer Mandiri (.apk)
+
+Jika ingin membuat file installer APK yang dapat dibagikan tanpa memerlukan aplikasi Expo Go:
+
+1. Buat akun di [expo.dev](https://expo.dev/)
+2. Install EAS CLI secara global:
+   ```bash
+   npm install -g eas-cli
+   ```
+3. Login ke akun Expo Anda via terminal:
+   ```bash
+   eas login
+   ```
+4. Jalankan perintah build untuk Android:
+   ```bash
+   eas build --platform android --profile preview
+   ```
+5. Tunggu proses build selesai di cloud Expo. Link download file `.apk` akan diberikan setelah selesai.
