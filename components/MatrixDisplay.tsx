@@ -21,7 +21,7 @@ export default function MatrixDisplay({ matrix, size }: MatrixDisplayProps) {
                             {row.map((val, j) => (
                                 <View
                                     key={j}
-                                    className="w-14 h-12 items-center justify-center"
+                                    className="w-16 h-12 items-center justify-center"
                                 >
                                     <Text className="text-white text-xl font-bold text-center">
                                         {val}

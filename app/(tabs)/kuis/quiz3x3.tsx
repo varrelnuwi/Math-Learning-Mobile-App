@@ -1,5 +1,5 @@
 import MatrixDisplay from '@/components/MatrixDisplay';
-import { det3x3, generateRandomMatrix } from '@/utils/determinant';
+import { det3x3, generateRandomMatrix, roundTo } from '@/utils/determinant';
 import { Audio } from 'expo-av';
 import { useRouter } from 'expo-router';
 import { ArrowLeft, CheckCircle, Clock, RotateCcw, XCircle } from 'lucide-react-native';
@@ -100,7 +100,7 @@ export default function Quiz3x3() {
         stopSound();
         setIsSubmitted(true);
         const userAnswer = parseFloat(answer) || 0;
-        setIsCorrect(userAnswer === correctAnswer);
+        setIsCorrect(Math.abs(roundTo(userAnswer) - correctAnswer) <= 0.01);
     };
 
     const handleSubmit = () => {
@@ -110,7 +110,7 @@ export default function Quiz3x3() {
         setIsRunning(false);
         setIsSubmitted(true);
         const userAnswer = parseFloat(answer) || 0;
-        setIsCorrect(userAnswer === correctAnswer);
+        setIsCorrect(Math.abs(roundTo(userAnswer) - correctAnswer) <= 0.01);
     };
 
     const handleRetry = () => {
@@ -176,7 +176,7 @@ export default function Quiz3x3() {
                             <Text className="text-slate-400 text-sm mb-2 font-semibold">Jawabanmu:</Text>
                             <TextInput
                                 className="bg-surface-elevated border border-indigo-500/30 rounded-2xl px-5 py-4 text-white text-xl font-bold text-center"
-                                keyboardType="numeric"
+                                keyboardType="decimal-pad"
                                 value={answer}
                                 onChangeText={setAnswer}
                                 placeholder="Masukkan jawaban..."

@@ -9,7 +9,7 @@
  * det = ad - bc
  */
 export function det2x2(a: number, b: number, c: number, d: number): number {
-    return a * d - b * c;
+    return roundTo(a * d - b * c);
 }
 
 /**
@@ -24,7 +24,7 @@ export function det3x3(matrix: number[][]): number {
     const [d, e, f] = matrix[1];
     const [g, h, i] = matrix[2];
 
-    return (
+    return roundTo(
         a * e * i +
         b * f * g +
         c * d * h -
@@ -35,7 +35,17 @@ export function det3x3(matrix: number[][]): number {
 }
 
 /**
- * Generate a random matrix of given size with values between min and max (inclusive)
+ * Round a number to avoid floating-point drift
+ */
+export function roundTo(value: number, decimals: number = 2): number {
+    const factor = Math.pow(10, decimals);
+    return Math.round(value * factor) / factor;
+}
+
+/**
+ * Generate a random matrix of given size with values between min and max.
+ * Each element has a ~40% chance of being a float with 1 decimal place,
+ * otherwise it will be an integer.
  */
 export function generateRandomMatrix(
     size: number,
@@ -46,7 +56,14 @@ export function generateRandomMatrix(
     for (let i = 0; i < size; i++) {
         const row: number[] = [];
         for (let j = 0; j < size; j++) {
-            row.push(Math.floor(Math.random() * (max - min + 1)) + min);
+            if (Math.random() < 0.4) {
+                // Float with 1 decimal place
+                const raw = Math.random() * (max - min) + min;
+                row.push(roundTo(raw, 1));
+            } else {
+                // Integer
+                row.push(Math.floor(Math.random() * (max - min + 1)) + min);
+            }
         }
         matrix.push(row);
     }
